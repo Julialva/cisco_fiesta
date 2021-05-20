@@ -48,7 +48,7 @@ class XlsReader():
 
 
 
-xls = XlsReader(file_path='/Users/julialva/Desktop/cisco_project/cisco_fiesta/input_files/17_05_2021_Situação Atual Inventário Distribuição.xlsx')
+xls = XlsReader(file_path='/Users/julialva/Desktop/cisco_project/cisco_fiesta/adapters/data/input_file.xlsx')
 main_name_list = ['Ingram','Scansource','Comstor']
 ft_name_list = ['Ingram Fast Track','Scansource Fast Track','Comstor Fast Track']
 col_list = ['Cisco Standard Part Number','Distributor Part Number','Product Item Description',
