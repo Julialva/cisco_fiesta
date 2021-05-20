@@ -15,6 +15,7 @@ class XlsReader():
         self.sheet,self.columns = XlsReader.error_handle_cols(self,self.columns,fast_track=True)
         return self.sheet.fillna(0)
     def sheet_to_dict(self,main_name_list=[],col_list=[],fast_track=False,sheet_dict = dict()):
+        #this sould be re-made into a more efficient func
         self.sheet_name_list = main_name_list
         self.df_list = []
         self.sheet_dict = sheet_dict
