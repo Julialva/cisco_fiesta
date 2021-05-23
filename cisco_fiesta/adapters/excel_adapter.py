@@ -1,7 +1,7 @@
 import pandas as pd
 
 class XlsReader():
-    def __init__(self,file_path=''):
+    def __init__(self,file_path='./data/input_file.xlsx'):
         self.xls = pd.ExcelFile(file_path)
     def get_main_sheet(self,sheet_name,col_list=[]):
             self.sheet = pd.read_excel(self.xls,sheet_name)
@@ -23,13 +23,13 @@ class XlsReader():
             for item in main_name_list:
                 self.df_list.append(XlsReader.get_main_sheet(self,sheet_name=item,col_list=col_list))
                 for _item in self.df_list:
-                    self.sheet_dict[item] = _item
+                    self.sheet_dict[item] = _item.to_json()
             return  self.sheet_dict
         if fast_track == True:
             for item in main_name_list:
                 self.df_list.append(XlsReader.get_ft_sheet(self,sheet_name=item,col_list=col_list))
                 for _item in self.df_list:
-                    self.sheet_dict[item] = _item
+                    self.sheet_dict[item] = _item.to_json()
             return  self.sheet_dict
     def error_handle_cols(self,col_list,fast_track=False):
         self.col_list = col_list
@@ -46,15 +46,12 @@ class XlsReader():
             return self.sheet
         else:
             return self.sheet,self.columns
+class FakeXlsReader:
+    def __init__(self,file_path=0):
+        pass
+    def standard_procedure():
+        pass
+    def sheet_to_dict():
+        pass
 
 
-
-xls = XlsReader(file_path='/Users/julialva/Desktop/cisco_project/cisco_fiesta/adapters/data/input_file.xlsx')
-main_name_list = ['Ingram','Scansource','Comstor']
-ft_name_list = ['Ingram Fast Track','Scansource Fast Track','Comstor Fast Track']
-col_list = ['Cisco Standard Part Number','Distributor Part Number','Product Item Description',
-                           'Quantity on Hand','Quantity On Order','Distributor Reported In-transit Quantity','Committed Quantity','Available']
-fast_col_list = ['FT Part Number','Avaiable']
-dicto = XlsReader.sheet_to_dict(xls,main_name_list=main_name_list,col_list=col_list)
-exit_dicto = XlsReader.sheet_to_dict(xls,main_name_list=ft_name_list,col_list=fast_col_list,fast_track=True,sheet_dict = dicto)
-print(exit_dicto)
