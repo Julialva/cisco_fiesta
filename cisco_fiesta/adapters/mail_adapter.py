@@ -38,7 +38,10 @@ class MailScrapper():
                     with open(file_path,'wb') as file:
                         file.write(part.get_payload(decode=True))
 class FakeMailScrapper:
-    def get_attachments(self,raw=0):
+    def __init__(self):
         pass
     def find_mail(self):
         pass
+    def get_attachments(self,raw=0):
+        pass
+   

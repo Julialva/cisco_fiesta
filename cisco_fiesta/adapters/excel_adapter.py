@@ -7,7 +7,8 @@ class XlsReader():
             self.sheet = pd.read_excel(self.xls,sheet_name)
             self.sheet = self.sheet[self.sheet['Cisco Standard Part Number'].notna()]
             self.columns = col_list
-            return XlsReader.error_handle_cols(self,self.columns)
+            self.sheet = XlsReader.error_handle_cols(self,self.columns)
+            return self.sheet.fillna(0)       
     def get_ft_sheet(self,sheet_name,col_list):
         self.sheet = pd.read_excel(self.xls,sheet_name)
         self.sheet = self.sheet[self.sheet['FT Part Number'].notna()]
@@ -47,11 +48,13 @@ class XlsReader():
         else:
             return self.sheet,self.columns
 class FakeXlsReader:
-    def __init__(self,file_path=0):
+    def __init__(self,file_path='./data/input_file.xlsx'):
         pass
-    def standard_procedure():
+    def get_main_sheet(self,sheet_name,col_list=[]):
         pass
-    def sheet_to_dict():
+    def get_ft_sheet(self,sheet_name,col_list):
         pass
-
-
+    def sheet_to_dict(self,main_name_list=[],col_list=[],fast_track=False,sheet_dict = dict()):
+        pass
+    def error_handle_cols(self,col_list,fast_track=False):
+        pass
