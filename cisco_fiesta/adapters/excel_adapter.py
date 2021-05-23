@@ -46,20 +46,12 @@ class XlsReader():
             return self.sheet
         else:
             return self.sheet,self.columns
-    def standard_procedure(self):
-        #needs to be changed? don't know how to make it better yet ;-;
-        main_name_list = ['Ingram','Scansource','Comstor']
-        ft_name_list = ['Ingram Fast Track','Scansource Fast Track','Comstor Fast Track']
-        col_list = ['Cisco Standard Part Number','Distributor Part Number','Product Item Description',
-                            'Quantity on Hand','Quantity On Order','Distributor Reported In-transit Quantity','Committed Quantity','Available']
-        fast_col_list = ['FT Part Number','Avaiable']
-        dicto = XlsReader.sheet_to_dict(self,main_name_list=main_name_list,col_list=col_list)
-        final_dicto = XlsReader.sheet_to_dict(self,main_name_list=ft_name_list,col_list=fast_col_list,fast_track=True,sheet_dict = dicto)
-        return final_dicto
 class FakeXlsReader:
     def __init__(self,file_path=0):
         pass
     def standard_procedure():
+        pass
+    def sheet_to_dict():
         pass
 
 

@@ -15,6 +15,6 @@ class ScrappPort(object):
 class XlsxPort(object):
     def __init__(self):
         self.adapter = eval(os.getenv('XLSX_ADAPTER'))()
-    def fetch_data(self):
-        df_dict = self.adapter.standard_procedure()
-        return df_dict
+    def fetch_data(self,main_name_list,col_list,fast_track=False,sheet_dict=dict()):
+        return self.adapter.sheet_to_dict(main_name_list=main_name_list,col_list=col_list,
+                    fast_track=fast_track,sheet_dict=sheet_dict)
